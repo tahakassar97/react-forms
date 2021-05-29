@@ -6,13 +6,16 @@ import Paper from '../components/Paper';
 import Table from '../components/Table';
 import AutoCompletePicker from '../components/AutoCompletePicker';
 
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 const useStyles = makeStyles((theme) => ({
 	container: {
 		backgroundColor: 'white',
 		margin: '60px 0px 60px 0px',
 		minHeight: '620px',
 		padding: '50px 5px 5px 5px',
-		borderRadius: '5px'
+		borderRadius: '5px',
 	},
 }));
 
@@ -165,6 +168,8 @@ export default function Main() {
 	const [status, setStatus] = useState('');
 	const [selectedDate, setSelectedDate] = React.useState(new Date());
 	const classes = useStyles();
+	const theme = useTheme();
+	const downSM = useMediaQuery(theme.breakpoints.down('xs'));
 
 	const handleBrand = (e) => {
 		setBrand(e.target.value);
@@ -222,16 +227,16 @@ export default function Main() {
 							helperText={true}
 						/>
 					</Grid>
-					<Grid item xs={6} md={3} direction="row" display="flex" justify="center">
+					<Grid item xs={5} md={3} direction="row" display="flex" justify="center">
 						<AutoCompletePicker filterBy="First Name" />
 					</Grid>
-					<Grid item xs={6} md={3} direction="row" display="flex" justify="center">
+					<Grid item xs={5} md={3} direction="row" display="flex" justify="center">
 						<AutoCompletePicker filterBy="Last Name" />
 					</Grid>
-					<Grid item xs={6} md={3}>
+					<Grid item xs={12} sm={5} md={3}>
 						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="Start Date" />
 					</Grid>
-					<Grid item xs={6} md={3}>
+					<Grid item xs={12} sm={5} md={3} style={downSM ? { marginTop: '10px' } : null}>
 						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="End Date" />
 					</Grid>
 				</Grid>
