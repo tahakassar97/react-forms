@@ -181,7 +181,7 @@ export default function DeliveryInfo() {
 					</Typography>
 				</Grid>
 				<Grid container spacing={1} style={{ marginTop: '2%' }}>
-					<Grid item xs={6} sm={4} md={3}>
+					<Grid item xs={7} sm={4} md={3}>
 						<RadioGroup
 							formLabel="Preferred Language"
 							value1="English"
@@ -190,7 +190,7 @@ export default function DeliveryInfo() {
 							setValue={setPreferredLang}
 						/>
 					</Grid>
-					<Grid item xs={6} sm={4} md={3}>
+					<Grid item xs={5} sm={4} md={3}>
 						<TextField required={true} label="Lead ID" />
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
