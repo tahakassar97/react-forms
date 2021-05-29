@@ -181,7 +181,7 @@ export default function DeliveryInfo() {
 					</Typography>
 				</Grid>
 				<Grid container spacing={1} style={{ marginTop: '2%' }}>
-					<Grid item xs={7} sm={4} md={3}>
+					<Grid item xs={6} sm={4} md={3}>
 						<RadioGroup
 							formLabel="Preferred Language"
 							value1="English"
@@ -190,7 +190,7 @@ export default function DeliveryInfo() {
 							setValue={setPreferredLang}
 						/>
 					</Grid>
-					<Grid item xs={5} sm={4} md={3}>
+					<Grid item xs={6} sm={4} md={3}>
 						<TextField required={true} label="Lead ID" />
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
@@ -209,7 +209,7 @@ export default function DeliveryInfo() {
 							elements={inquiryTypes}
 							handleChange={handleInquiryType}
 							helperText={false}
-							width={downSM ? '100%' : '83%'}
+							width={downSM ? '100%' : '68%'}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -344,7 +344,7 @@ export default function DeliveryInfo() {
 						justify="space-evenly"
 						style={{ margin: '10px 0px 40px 0px' }}
 					>
-						<Grid item xs={4}>
+						<Grid item xs={5}>
 							<Button
 								variant="contained"
 								color="primary"
@@ -355,7 +355,7 @@ export default function DeliveryInfo() {
 								Update
 							</Button>
 						</Grid>
-						<Grid item xs={6} sm={4}>
+						<Grid item xs={5}>
 							<Button
 								variant="contained"
 								color="primary"
