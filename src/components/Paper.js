@@ -79,7 +79,7 @@ export default function Variants({ data }) {
 													backgroundColor: 'rgba(255, 217, 0, 0.466)',
 													marginBottom: '3px',
 													borderRadius: '4px',
-													marginLeft: '30px',
+													marginLeft: '20px',
 												}}
 											>
 												{element.details.new}
@@ -88,7 +88,7 @@ export default function Variants({ data }) {
 												style={{
 													backgroundColor: 'rgba(30, 104, 40, 0.300)',
 													borderRadius: '4px',
-													marginLeft: '30px',
+													marginLeft: '20px',
 												}}
 											>
 												{element.details.declined}
