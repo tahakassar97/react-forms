@@ -355,7 +355,7 @@ export default function DeliveryInfo() {
 								Update
 							</Button>
 						</Grid>
-						<Grid item xs={6}>
+						<Grid item xs={6} sm={4}>
 							<Button
 								variant="contained"
 								color="primary"
