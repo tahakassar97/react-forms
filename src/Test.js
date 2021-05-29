@@ -11,14 +11,16 @@ function CustomToolbar() {
 }
 
 export default function ExportSelectorGrid() {
-	// const data = [
-	// 	{
-	// 		'name'
-	// 	},
-	// 	{
-
-	// 	}
-	// ]
+	const data = [
+		{
+			name: 'name',
+			age: 20,
+		},
+		{
+			name: 'name',
+			age: 20,
+		},
+	];
 
 	return (
 		<div style={{ height: 300, width: '100%' }}>
@@ -26,7 +28,6 @@ export default function ExportSelectorGrid() {
 				{...data}
 				components={{
 					Toolbar: CustomToolbar,
-					
 				}}
 			/>
 		</div>

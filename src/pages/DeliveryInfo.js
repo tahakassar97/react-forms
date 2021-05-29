@@ -190,11 +190,11 @@ export default function DeliveryInfo() {
 							setValue={setPreferredLang}
 						/>
 					</Grid>
-					<Grid item xs={6} sm={4} md={3}>
+					<Grid item xs={6} sm={4} md={3} display="flex" alignItems="center">
 						<TextField required={true} label="Lead ID" />
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
-						<TextField required={false} label="City" />
+						<TextField required={false} label="City" display="flex" alignItems="center" />
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
 						<TextField required={false} label="Unit Size" />
