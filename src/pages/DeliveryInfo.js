@@ -209,7 +209,7 @@ export default function DeliveryInfo() {
 							elements={inquiryTypes}
 							handleChange={handleInquiryType}
 							helperText={false}
-							width={200}
+							width={downSM ? '100%' : '83%'}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -355,7 +355,7 @@ export default function DeliveryInfo() {
 								Update
 							</Button>
 						</Grid>
-						<Grid item xs={4}>
+						<Grid item xs={6}>
 							<Button
 								variant="contained"
 								color="primary"
