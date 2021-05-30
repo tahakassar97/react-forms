@@ -6,12 +6,11 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		borderRadius: '3px',
-		minWidth: '290px',
+		minWidth: '270px',
 		height: '60px',
 		marginTop: '10px',
 		borderLeft: `5px solid rgb(155, 153, 153)`,
 		boxShadow: `1px 1px 4px rgba(220, 220, 220, 0.836)`,
-		marginRight: '40px',
 	},
 	margin: {
 		margin: '4px',
@@ -19,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 	root2: {
 		display: 'flex',
 		borderRadius: '3px',
-		minWidth: '290px',
+		minWidth: '270px',
 		height: '60px',
 		marginTop: '10px',
 		borderLeft: `5px solid rgb(30, 104, 40)`,
@@ -77,9 +76,8 @@ export default function Variants({ data }) {
 											<div
 												style={{
 													backgroundColor: 'rgba(255, 217, 0, 0.466)',
-													marginBottom: '3px',
 													borderRadius: '4px',
-													marginLeft: '20px',
+													margin: '0px 0px 3px 20%',
 												}}
 											>
 												{element.details.new}
@@ -88,7 +86,7 @@ export default function Variants({ data }) {
 												style={{
 													backgroundColor: 'rgba(30, 104, 40, 0.300)',
 													borderRadius: '4px',
-													marginLeft: '20px',
+													margin: '0px 0px 0px 20%',
 												}}
 											>
 												{element.details.declined}

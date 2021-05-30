@@ -9,10 +9,7 @@ import { FormHelperText } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
 	formControl: {
 		margin: theme.spacing(1),
-		minWidth: 130,
-	},
-	selectEmpty: {
-		marginTop: theme.spacing(2),
+		minWidth: 150,
 	},
 }));
 
@@ -21,12 +18,10 @@ export default function DropDown({ element, elements, handleChange, inputLabel, 
 	const data = elements.map((element) => {
 		return <MenuItem value={element.id}>{element.title}</MenuItem>;
 	});
-
 	return (
 		<FormControl
 			variant="filled"
-			className={width ? null : classes.formControl}
-			style={width ? { width: width } : null}
+			style={width ? { width: width } : { width: 150 }}
 		>
 			<InputLabel id="demo-simple-select-filled-label">{inputLabel}</InputLabel>
 			<Select

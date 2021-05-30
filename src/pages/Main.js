@@ -5,7 +5,6 @@ import DatePicker from '../components/DatePicker';
 import Paper from '../components/Paper';
 import Table from '../components/Table';
 import AutoCompletePicker from '../components/AutoCompletePicker';
-
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -14,8 +13,10 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: 'white',
 		margin: '60px 0px 60px 0px',
 		minHeight: '620px',
+		maxWidth: '96%',
 		padding: '50px 5px 5px 5px',
 		borderRadius: '5px',
+		float: 'right',
 	},
 }));
 
@@ -112,7 +113,7 @@ const data3 = [
 		brand: 'Cubeit',
 		city: 'Ajax',
 		typeOfJob: 'Long Distance',
-		status: 'Declined',
+		status: 'New',
 	},
 	{
 		eventTime: `2021-05-25
@@ -124,7 +125,7 @@ const data3 = [
 		phone: '647446683',
 		parqId: 'R-206263H',
 		desiredDate: '2021-06-03',
-		brand: 'Cubeit',
+		brand: 'AAA',
 		city: 'Ajax',
 		typeOfJob: 'Long Distance',
 		status: 'Declined',
@@ -139,10 +140,10 @@ const data3 = [
 		phone: '647446683',
 		parqId: 'R-206263H',
 		desiredDate: '2021-06-03',
-		brand: 'Cubeit',
+		brand: 'EEEE',
 		city: 'Ajax',
 		typeOfJob: 'Long Distance',
-		status: 'Declined',
+		status: 'Success',
 	},
 	{
 		eventTime: `2021-05-25
@@ -154,12 +155,13 @@ const data3 = [
 		phone: '647446683',
 		parqId: 'R-206263H',
 		desiredDate: '2021-06-03',
-		brand: 'Cubeit',
+		brand: 'XXXX',
 		city: 'Ajax',
 		typeOfJob: 'Long Distance',
 		status: 'Declined',
 	},
 ];
+
 
 export default function Main() {
 	const [brand, setBrand] = useState('');
@@ -188,7 +190,7 @@ export default function Main() {
 	};
 
 	return (
-		<Container>
+		<Container className={classes.root}>
 			<Grid className={classes.container}>
 				<Grid container direction="row" justify="space-around">
 					<Grid item xs={6} md={3}>
@@ -240,7 +242,7 @@ export default function Main() {
 						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="End Date" />
 					</Grid>
 				</Grid>
-				<Grid container direction="row" justify="flex-start">
+				<Grid container direction="row" justify="space-evenly">
 					<Paper data={data2} />
 				</Grid>
 				<Table data_={data3} />

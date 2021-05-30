@@ -191,16 +191,22 @@ export default function DeliveryInfo() {
 						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={3} display="flex" alignItems="center">
-						<TextField required={true} label="Lead ID" />
+						<TextField required={true} label="Lead ID" width={downSM ? '100%' : '67%'} />
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
-						<TextField required={false} label="City" display="flex" alignItems="center" />
+						<TextField
+							required={false}
+							label="City"
+							display="flex"
+							alignItems="center"
+							width={downSM ? '100%' : '67%'}
+						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
-						<TextField required={false} label="Unit Size" />
+						<TextField required={false} label="Unit Size" width={downSM ? '100%' : '67%'} />
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
-						<TextField required={true} label="Park quote ID" />
+						<TextField required={true} label="Park quote ID" width={downSM ? '100%' : '67%'} />
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
 						<DropDown
@@ -209,7 +215,7 @@ export default function DeliveryInfo() {
 							elements={inquiryTypes}
 							handleChange={handleInquiryType}
 							helperText={false}
-							width={downSM ? '100%' : '68%'}
+							width={downSM ? '100%' : '67%'}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>

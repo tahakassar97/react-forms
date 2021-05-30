@@ -2,14 +2,19 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { FormHelperText, Grid } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 export default function ComboBox({ filterBy }) {
+	const theme = useTheme();
+	const downSM = useMediaQuery(theme.breakpoints.down('sm'));
+
 	return (
 		<Grid container direction="row" display="flex" justify="center">
 			<Autocomplete
 				id="combo-box-demo"
 				options={top100Films}
-				style={{ width: '180px' }}
+				style={downSM ? { width: '100%' } : { width: '180px' }}
 				getOptionLabel={(option) => option.title}
 				renderInput={(params) => (
 					<>

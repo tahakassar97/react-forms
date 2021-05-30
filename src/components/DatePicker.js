@@ -13,7 +13,6 @@ export default function DatePicker({ selectedDate, setSelectedDate, title }) {
 	};
 
 	return (
-		<>
 			<MuiPickersUtilsProvider utils={DateFnsUtils}>
 				<KeyboardDatePicker
 					id="date-picker-dialog"
@@ -29,6 +28,5 @@ export default function DatePicker({ selectedDate, setSelectedDate, title }) {
 					}}
 				/>
 			</MuiPickersUtilsProvider>
-		</>
 	);
 }

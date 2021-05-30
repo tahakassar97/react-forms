@@ -5,11 +5,12 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import { TableRow } from '@material-ui/core';
+import { Fab, Grid, TableRow, TableSortLabel } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import { NavLink } from 'react-router-dom';
+import Menu from '../components/Menu';
 import './styles.css';
-
+import { Cancel, NavigateNext, FiberNewRounded, CheckCircle } from '@material-ui/icons';
+import { useHistory } from 'react-router';
 const useStyles = makeStyles((theme) => ({
 	table: {
 		minWidth: 650,
@@ -20,23 +21,128 @@ const useStyles = makeStyles((theme) => ({
 		boxShadow: `0px 0px 1px ${theme.palette.primary.main}`,
 	},
 	font: {
-		fontSize: '13px',
+		fontSize: '12px',
 	},
 	grayItem: {
 		backgroundColor: 'rgba(180, 180, 180, 0.200)',
 	},
+	avatar: {
+		cursor: 'pointer',
+		width: '36px',
+		height: '25px',
+	},
+	newIcon: {
+		width: '35px',
+		height: '35px',
+		color: '#c1ce0a',
+	},
+	cancelIcon: {
+		width: '35px',
+		height: '35px',
+		color: '#832d2d',
+	},
+	successIcon: {
+		width: '35px',
+		height: '35px',
+		color: '#329740',
+	},
+	root: {
+		float: 'right',
+		paddingRight: '1.5%',
+		margin: '10px 0px',
+	},
+	header: {
+		fontSize: '11px',
+		fontWeight: 'bold',
+	},
 }));
+
+function descendingComparator(a, b, orderBy) {
+	if (b[orderBy] < a[orderBy]) {
+		return -1;
+	}
+	if (b[orderBy] > a[orderBy]) {
+		return 1;
+	}
+	return 0;
+}
+
+function getComparator(order, orderBy) {
+	return order === 'desc'
+		? (a, b) => descendingComparator(a, b, orderBy)
+		: (a, b) => -descendingComparator(a, b, orderBy);
+}
+
+function stableSort(array, comparator) {
+	const stabilizedThis = array.map((el, index) => [el, index]);
+	stabilizedThis.sort((a, b) => {
+		const order = comparator(a[0], b[0]);
+		if (order !== 0) return order;
+		return a[1] - b[1];
+	});
+	return stabilizedThis.map((el) => el[0]);
+}
+
+const headCells = [
+	{ id: 'Event Time', numeric: true, disablePadding: false, label: 'Event Time' },
+	{ id: 'LCode', numeric: true, disablePadding: false, label: 'LCode' },
+	{ id: 'Length of stay', numeric: true, disablePadding: false, label: 'Length of stay' },
+	{ id: 'First name', numeric: false, disablePadding: false, label: 'First name' },
+	{ id: 'Last name', numeric: false, disablePadding: false, label: 'Last name' },
+	{ id: 'Phone', numeric: true, disablePadding: false, label: 'Phone' },
+	{ id: 'Parq quote ID', numeric: true, disablePadding: false, label: 'Parq quote ID' },
+	{ id: 'Desired delivery date', numeric: true, disablePadding: false, label: 'Desired delivery date' },
+	{ id: 'Brand', numeric: false, disablePadding: false, label: 'Brand' },
+	{ id: 'City', numeric: false, disablePadding: false, label: 'City' },
+	{ id: 'Type of job', numeric: false, disablePadding: false, label: 'Type of job' },
+	{ id: 'Status', numeric: false, disablePadding: false, label: 'Status' },
+];
 
 export default function SellerTable({ data_ }) {
 	const classes = useStyles();
+	const [order, setOrder] = React.useState('');
+	const [orderBy, setOrderBy] = React.useState('');
+	const history = useHistory();
 
-	const data = data_.map((row, index) => {
+	const columns = [
+		'Event Time',
+		'LCode',
+		'Length of stay',
+		'First name',
+		'Last name',
+		'Phone',
+		'Parq quote ID',
+		'Desired delivery date',
+		'Brand',
+		'City',
+		'Type of job',
+		'Status',
+	];
+
+	const stringsData = data_.map((row) => {
+		return Object.values(row);
+	});
+
+	const handleRequestSort = (event, property) => {
+		console.log(property);
+		const isAsc = orderBy === property && order === 'asc';
+		console.log(isAsc);
+		setOrder(isAsc ? 'desc' : 'asc');
+		setOrderBy(property);
+	};
+	
+	const handleOpenDetails = () => {
+		history.push('/info');
+	};
+
+	stringsData.unshift(columns);
+
+	const data = stableSort(data_, getComparator(order, orderBy)).map((row, index) => {
+		console.log('render');
 		return (
-			<TableRow key={index} className={index % 2 === 0 ? classes.grayItem : null}>
+			<TableRow key={index} className={index % 2 === 0 ? classes.grayItem : null} hover tabIndex={-1}>
 				<TableCell align="left" width="4%" className={classes.font}>
-					<NavLink to="/info" className="link">
-						{row.eventTime}
-					</NavLink>
+					{row.eventTime}
 				</TableCell>
 				<TableCell align="left" className={classes.font}>
 					{row.lcode}
@@ -68,58 +174,81 @@ export default function SellerTable({ data_ }) {
 				<TableCell align="left" width="11%" className={classes.font}>
 					{row.typeOfJob}
 				</TableCell>
+				<TableCell align="center" width="5%" className={classes.font}>
+					{row.status.includes('New') ? (
+						<FiberNewRounded className={classes.newIcon} />
+					) : row.status.includes('Declined') ? (
+						<Cancel className={classes.cancelIcon} />
+					) : (
+						<CheckCircle className={classes.successIcon} />
+					)}
+				</TableCell>
 				<TableCell align="left" width="5%" className={classes.font}>
-					{row.status}
+					<Fab color="primary" aria-label="edit" className={classes.avatar} onClick={handleOpenDetails}>
+						<NavigateNext />
+					</Fab>
 				</TableCell>
 			</TableRow>
 		);
 	});
 
+	// TODO Collapsible table
+
+	function EnhancedTableHead(props) {
+		const { classes, order, orderBy, onRequestSort } = props;
+		const createSortHandler = (property) => (event) => {
+			console.log(property);
+			onRequestSort(event, property);
+		};
+
+		return (
+			<TableHead>
+				<TableRow>
+					{headCells.map((headCell) => (
+						<TableCell
+							key={headCell.id}
+							padding={headCell.disablePadding ? 'none' : 'default'}
+							sortDirection={orderBy === headCell.id ? order : false}
+							align="left"
+							className={classes.header}
+						>
+							<TableSortLabel
+								active={orderBy === headCell.id}
+								direction={orderBy === headCell.id ? order : 'asc'}
+								onClick={createSortHandler(headCell.id)}
+							>
+								{headCell.label}
+							</TableSortLabel>
+						</TableCell>
+					))}
+					<TableCell> </TableCell>
+				</TableRow>
+			</TableHead>
+		);
+	}
+
 	return (
-		<TableContainer component={Paper} className={`${classes.container} uniqueName`}>
-			<Table className={classes.table} stickyHeader aria-label="sticky table">
-				<TableHead>
-					<TableRow>
-						<TableCell align="left" className={classes.font}>
-							Event Time
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							LCode
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							Length of stay
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							First name
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							Last name
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							Phone
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							Parq quote ID
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							Desired delivery date
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							Brand
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							City
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							Type of job
-						</TableCell>
-						<TableCell align="left" className={classes.font}>
-							Status
-						</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>{data}</TableBody>
-			</Table>
-		</TableContainer>
+		<>
+			<Grid container display="flex" direction="row" justify="flex-end" className={classes.root}>
+				<Menu stringsData={stringsData} columns={columns} />
+			</Grid>
+			<TableContainer component={Paper} className={`${classes.container} uniqueName`}>
+				<Table
+					id="table"
+					className={classes.table}
+					stickyHeader
+					aria-label="collapsible table"
+					aria-labelledby="tableTitle"
+				>
+					<EnhancedTableHead
+						classes={classes}
+						order={order}
+						orderBy={orderBy}
+						onRequestSort={handleRequestSort}
+					/>
+					<TableBody>{data}</TableBody>
+				</Table>
+			</TableContainer>
+		</>
 	);
 }
