@@ -5,8 +5,8 @@ import { Grid, Typography } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
-		borderRadius: '3px',
-		minWidth: '270px',
+		borderRadius: '2px',
+		minWidth: '250px',
 		height: '60px',
 		marginTop: '10px',
 		borderLeft: `5px solid rgb(155, 153, 153)`,
@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	root2: {
 		display: 'flex',
-		borderRadius: '3px',
-		minWidth: '270px',
+		borderRadius: '2px',
+		minWidth: '250px',
 		height: '60px',
 		marginTop: '10px',
 		borderLeft: `5px solid rgb(30, 104, 40)`,
@@ -45,14 +45,14 @@ export default function Variants({ data }) {
 							<Grid container direction="row" justify="space-between" alignItems="center">
 								<Grid item>
 									<Grid container justify="space-between">
-										<Typography gutterBottom variant="body2" className={classes.margin}>
+										<Typography gutterBottom variant="caption" className={classes.margin}>
 											{element.title}
 										</Typography>
 									</Grid>
 									<Grid container>
 										<Typography
 											display="inline"
-											variant="body1"
+											variant="caption"
 											color="textSecondary"
 											className={classes.margin}
 										>
@@ -60,7 +60,7 @@ export default function Variants({ data }) {
 										</Typography>
 										<Typography
 											display="inline"
-											variant="body2"
+											variant="caption"
 											color="textSecondary"
 											component="p"
 											className={classes.margin}
@@ -71,28 +71,30 @@ export default function Variants({ data }) {
 									</Grid>
 								</Grid>
 								{index !== 0 ? (
-									<>
-										<Grid>
-											<div
+									<div>
+										<Grid container display="flex" direction="column" justify="flex-end" alignItems="flex-end">
+											<Typography
+												variant="caption"
 												style={{
 													backgroundColor: 'rgba(255, 217, 0, 0.466)',
-													borderRadius: '4px',
-													margin: '0px 0px 3px 20%',
+													borderRadius: '2px',
+													margin: '0px 0px 3px 0%',
 												}}
 											>
 												{element.details.new}
-											</div>
-											<div
+											</Typography>
+											<Typography
+												variant="caption"
 												style={{
 													backgroundColor: 'rgba(30, 104, 40, 0.300)',
-													borderRadius: '4px',
-													margin: '0px 0px 0px 20%',
+													borderRadius: '2px',
+													margin: '0px 0px 0px 20px',
 												}}
 											>
 												{element.details.declined}
-											</div>
+											</Typography>
 										</Grid>
-									</>
+									</div>
 								) : null}
 							</Grid>
 						</div>

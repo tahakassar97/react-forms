@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Fab, makeStyles } from '@material-ui/core';
-import { ArrowDropDownRounded, ArrowDropUpRounded } from '@material-ui/icons';
+import { UnfoldMore } from '@material-ui/icons';
 import { CSVLink } from 'react-csv';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -18,6 +18,14 @@ const useStyles = makeStyles((theme) => ({
 	avatar2: {
 		width: '23px',
 		height: '23px',
+	},
+	fab: {
+		transform: 'rotate(90deg)',
+		transition: '0.3s',
+	},
+	fabReverse: {
+		transform: 'rotate(0deg)',
+		transition: '0.3s',
 	},
 }));
 
@@ -87,11 +95,11 @@ export default function CustomizedMenus({ stringsData, columns }) {
 				aria-controls="customized-menu"
 				aria-haspopup="true"
 				size="small"
-				variant="extend"
+				variant="round"
+				className={isOpen ? classes.fab : classes.fabReverse}
 				onClick={handleClick}
 			>
-				{isOpen ? <ArrowDropUpRounded /> : <ArrowDropDownRounded />}
-				Export Data
+				<UnfoldMore />
 			</Fab>
 			<StyledMenu
 				id="customized-menu"

@@ -11,6 +11,13 @@ import Menu from '../components/Menu';
 import './styles.css';
 import { Cancel, NavigateNext, FiberNewRounded, CheckCircle } from '@material-ui/icons';
 import { useHistory } from 'react-router';
+// import Box from '@material-ui/core/Box';
+// import Collapse from '@material-ui/core/Collapse';
+// import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+// import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import { ThemeProvider } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
+
 const useStyles = makeStyles((theme) => ({
 	table: {
 		minWidth: 650,
@@ -28,22 +35,22 @@ const useStyles = makeStyles((theme) => ({
 	},
 	avatar: {
 		cursor: 'pointer',
-		width: '36px',
-		height: '25px',
+		width: '35px',
+		height: '20px',
 	},
 	newIcon: {
-		width: '35px',
-		height: '35px',
+		width: '30px',
+		height: '30px',
 		color: '#c1ce0a',
 	},
 	cancelIcon: {
-		width: '35px',
-		height: '35px',
+		width: '30px',
+		height: '30px',
 		color: '#832d2d',
 	},
 	successIcon: {
-		width: '35px',
-		height: '35px',
+		width: '30px',
+		height: '30px',
 		color: '#329740',
 	},
 	root: {
@@ -54,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 	header: {
 		fontSize: '11px',
 		fontWeight: 'bold',
+		lineHeight: '1.5',
 	},
 }));
 
@@ -98,6 +106,16 @@ const headCells = [
 	{ id: 'Status', numeric: false, disablePadding: false, label: 'Status' },
 ];
 
+const theme = createMuiTheme({
+	overrides: {
+		MuiTableCell: {
+			root: {
+				padding: '4px 8px',
+			},
+		},
+	},
+});
+
 export default function SellerTable({ data_ }) {
 	const classes = useStyles();
 	const [order, setOrder] = React.useState('');
@@ -124,13 +142,11 @@ export default function SellerTable({ data_ }) {
 	});
 
 	const handleRequestSort = (event, property) => {
-		console.log(property);
 		const isAsc = orderBy === property && order === 'asc';
-		console.log(isAsc);
 		setOrder(isAsc ? 'desc' : 'asc');
 		setOrderBy(property);
 	};
-	
+
 	const handleOpenDetails = () => {
 		history.push('/info');
 	};
@@ -138,43 +154,42 @@ export default function SellerTable({ data_ }) {
 	stringsData.unshift(columns);
 
 	const data = stableSort(data_, getComparator(order, orderBy)).map((row, index) => {
-		console.log('render');
 		return (
 			<TableRow key={index} className={index % 2 === 0 ? classes.grayItem : null} hover tabIndex={-1}>
-				<TableCell align="left" width="4%" className={classes.font}>
+				<TableCell align="left" width="9%" className={classes.font} component="td" scope="row">
 					{row.eventTime}
 				</TableCell>
-				<TableCell align="left" className={classes.font}>
+				<TableCell align="left" className={classes.font} component="td" scope="row">
 					{row.lcode}
 				</TableCell>
-				<TableCell align="left" width="12%" className={classes.font}>
+				<TableCell align="left" width="12%" className={classes.font} component="td" scope="row">
 					{row.lengthOfStay}
 				</TableCell>
-				<TableCell align="left" width="10%" className={classes.font}>
+				<TableCell align="left" width="10%" className={classes.font} component="td" scope="row">
 					{row.firstName}
 				</TableCell>
-				<TableCell align="left" width="10%" className={classes.font}>
+				<TableCell align="left" width="10%" className={classes.font} component="td" scope="row">
 					{row.lastName}
 				</TableCell>
-				<TableCell align="left" width="2%" className={classes.font}>
+				<TableCell align="left" width="2%" className={classes.font} component="td" scope="row">
 					{row.phone}
 				</TableCell>
-				<TableCell align="left" width="10%" className={classes.font}>
+				<TableCell align="left" width="23%" className={classes.font} component="td" scope="row">
 					{row.parqId}
 				</TableCell>
-				<TableCell align="left" width="15%" className={classes.font}>
+				<TableCell align="left" width="20%" className={classes.font} component="td" scope="row">
 					{row.desiredDate}
 				</TableCell>
-				<TableCell align="left" className={classes.font}>
+				<TableCell align="left" className={classes.font} component="td" scope="row">
 					{row.brand}
 				</TableCell>
-				<TableCell align="left" className={classes.font}>
+				<TableCell align="left" className={classes.font} component="td" scope="row">
 					{row.city}
 				</TableCell>
-				<TableCell align="left" width="11%" className={classes.font}>
+				<TableCell align="left" width="11%" className={classes.font} component="td" scope="row">
 					{row.typeOfJob}
 				</TableCell>
-				<TableCell align="center" width="5%" className={classes.font}>
+				<TableCell align="center" width="5%" className={classes.font} component="td" scope="row">
 					{row.status.includes('New') ? (
 						<FiberNewRounded className={classes.newIcon} />
 					) : row.status.includes('Declined') ? (
@@ -183,7 +198,7 @@ export default function SellerTable({ data_ }) {
 						<CheckCircle className={classes.successIcon} />
 					)}
 				</TableCell>
-				<TableCell align="left" width="5%" className={classes.font}>
+				<TableCell align="left" width="5%" className={classes.font} component="td" scope="row">
 					<Fab color="primary" aria-label="edit" className={classes.avatar} onClick={handleOpenDetails}>
 						<NavigateNext />
 					</Fab>
@@ -232,23 +247,19 @@ export default function SellerTable({ data_ }) {
 			<Grid container display="flex" direction="row" justify="flex-end" className={classes.root}>
 				<Menu stringsData={stringsData} columns={columns} />
 			</Grid>
-			<TableContainer component={Paper} className={`${classes.container} uniqueName`}>
-				<Table
-					id="table"
-					className={classes.table}
-					stickyHeader
-					aria-label="collapsible table"
-					aria-labelledby="tableTitle"
-				>
-					<EnhancedTableHead
-						classes={classes}
-						order={order}
-						orderBy={orderBy}
-						onRequestSort={handleRequestSort}
-					/>
-					<TableBody>{data}</TableBody>
-				</Table>
-			</TableContainer>
+			<ThemeProvider theme={theme}>
+				<TableContainer component={Paper} className={`${classes.container} uniqueName`}>
+					<Table id="table" className={classes.table} stickyHeader aria-labelledby="tableTitle">
+						<EnhancedTableHead
+							classes={classes}
+							order={order}
+							orderBy={orderBy}
+							onRequestSort={handleRequestSort}
+						/>
+						<TableBody>{data}</TableBody>
+					</Table>
+				</TableContainer>
+			</ThemeProvider>
 		</>
 	);
 }

@@ -1,6 +1,6 @@
 import { Container, Grid, makeStyles } from '@material-ui/core';
-import React, { useState } from 'react';
-import DropDown from '../components/DropDown';
+import React from 'react';
+// import DropDown from '../components/DropDown';
 import DatePicker from '../components/DatePicker';
 import Paper from '../components/Paper';
 import Table from '../components/Table';
@@ -20,67 +20,67 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const brands = [
-	{
-		id: 1,
-		title: 'Cubeit',
-	},
-	{
-		id: 2,
-		title: 'PUPS',
-	},
-];
+// const brands = [
+// 	{
+// 		id: 1,
+// 		title: 'Cubeit',
+// 	},
+// 	{
+// 		id: 2,
+// 		title: 'PUPS',
+// 	},
+// ];
 
-const cities = [
-	{
-		id: 1,
-		title: 'Edmonton',
-	},
-	{
-		id: 2,
-		title: 'Brampton',
-	},
-	{
-		id: 3,
-		title: 'Ajax',
-	},
-	{
-		id: 4,
-		title: 'Manchester',
-	},
-];
+// const cities = [
+// 	{
+// 		id: 1,
+// 		title: 'Edmonton',
+// 	},
+// 	{
+// 		id: 2,
+// 		title: 'Brampton',
+// 	},
+// 	{
+// 		id: 3,
+// 		title: 'Ajax',
+// 	},
+// 	{
+// 		id: 4,
+// 		title: 'Manchester',
+// 	},
+// ];
 
-const jobs = [
-	{
-		id: 1,
-		title: 'Long Distance',
-	},
-	{
-		id: 2,
-		title: 'Move_Store',
-	},
-	{
-		id: 3,
-		title: 'Store',
-	},
-];
+// const jobs = [
+// 	{
+// 		id: 1,
+// 		title: 'Long Distance',
+// 	},
+// 	{
+// 		id: 2,
+// 		title: 'Move_Store',
+// 	},
+// 	{
+// 		id: 3,
+// 		title: 'Store',
+// 	},
+// ];
 
-const states = [
-	{
-		id: 1,
-		title: 'Decline',
-	},
-	{
-		id: 2,
-		title: 'New',
-	},
-	{
-		id: 3,
-		title: 'Completed',
-	},
-];
+// const states = [
+// 	{
+// 		id: 1,
+// 		title: 'Decline',
+// 	},
+// 	{
+// 		id: 2,
+// 		title: 'New',
+// 	},
+// 	{
+// 		id: 3,
+// 		title: 'Completed',
+// 	},
+// ];
 
-const data = ['Brands', 'Cities', 'Jobs', 'States'];
+// const data = ['Brands', 'Cities', 'Jobs', 'States'];
 
 const data2 = [
 	{
@@ -107,7 +107,7 @@ const data3 = [
 		lengthOfStay: '2',
 		firstName: 'Saleem',
 		lastName: 'Mustasa',
-		phone: '647446683',
+		phone: '647446667',
 		parqId: 'R-206263H',
 		desiredDate: '2021-06-03',
 		brand: 'Cubeit',
@@ -122,7 +122,7 @@ const data3 = [
 		lengthOfStay: '2',
 		firstName: 'Saleem',
 		lastName: 'Mustasa',
-		phone: '647446683',
+		phone: '647446667',
 		parqId: 'R-206263H',
 		desiredDate: '2021-06-03',
 		brand: 'AAA',
@@ -137,7 +137,7 @@ const data3 = [
 		lengthOfStay: '2',
 		firstName: 'Saleem',
 		lastName: 'Mustasa',
-		phone: '647446683',
+		phone: '647446667',
 		parqId: 'R-206263H',
 		desiredDate: '2021-06-03',
 		brand: 'EEEE',
@@ -152,7 +152,7 @@ const data3 = [
 		lengthOfStay: '2',
 		firstName: 'Saleem',
 		lastName: 'Mustasa',
-		phone: '647446683',
+		phone: '647446667',
 		parqId: 'R-206263H',
 		desiredDate: '2021-06-03',
 		brand: 'XXXX',
@@ -162,84 +162,65 @@ const data3 = [
 	},
 ];
 
-
 export default function Main() {
-	const [brand, setBrand] = useState('');
-	const [city, setCity] = useState('');
-	const [job, setJob] = useState('');
-	const [status, setStatus] = useState('');
+	// const [brand, setBrand] = useState('');
+	// const [city, setCity] = useState('');
+	// const [job, setJob] = useState('');
+	// const [status, setStatus] = useState('');
 	const [selectedDate, setSelectedDate] = React.useState(new Date());
 	const classes = useStyles();
 	const theme = useTheme();
 	const downSM = useMediaQuery(theme.breakpoints.down('xs'));
 
-	const handleBrand = (e) => {
-		setBrand(e.target.value);
-	};
+	// const handleBrand = (e) => {
+	// 	setBrand(e.target.value);
+	// };
 
-	const handleCity = (e) => {
-		setCity(e.target.value);
-	};
+	// const handleCity = (e) => {
+	// 	setCity(e.target.value);
+	// };
 
-	const handleJob = (e) => {
-		setJob(e.target.value);
-	};
+	// const handleJob = (e) => {
+	// 	setJob(e.target.value);
+	// };
 
-	const handleStatus = (e) => {
-		setStatus(e.target.value);
-	};
+	// const handleStatus = (e) => {
+	// 	setStatus(e.target.value);
+	// };
 
 	return (
 		<Container className={classes.root}>
 			<Grid className={classes.container}>
 				<Grid container direction="row" justify="space-around">
-					<Grid item xs={6} md={3}>
-						<DropDown
-							elements={brands}
-							element={brand}
-							handleChange={handleBrand}
-							inputLabel={data[0]}
-							helperText={true}
-						/>
+					<Grid item xs={5} md={3}>
+						<AutoCompletePicker filterBy="Brand" />
 					</Grid>
-					<Grid item xs={6} md={3}>
-						<DropDown
-							elements={cities}
-							element={city}
-							handleChange={handleCity}
-							inputLabel={data[1]}
-							helperText={true}
-						/>
+					<Grid item xs={5} md={3}>
+						<AutoCompletePicker filterBy="City" />
 					</Grid>
-					<Grid item xs={6} md={3}>
-						<DropDown
-							elements={jobs}
-							element={job}
-							handleChange={handleJob}
-							inputLabel={data[2]}
-							helperText={true}
-						/>
+					<Grid item xs={5} md={3}>
+						<AutoCompletePicker filterBy="Job" />
 					</Grid>
-					<Grid item xs={6} md={3}>
-						<DropDown
-							elements={states}
-							element={status}
-							handleChange={handleStatus}
-							inputLabel={data[3]}
-							helperText={true}
-						/>
+					<Grid item xs={5} md={3}>
+						<AutoCompletePicker filterBy="Status" />
 					</Grid>
-					<Grid item xs={5} md={3} direction="row" display="flex" justify="center">
-						<AutoCompletePicker filterBy="First Name" />
-					</Grid>
-					<Grid item xs={5} md={3} direction="row" display="flex" justify="center">
-						<AutoCompletePicker filterBy="Last Name" />
-					</Grid>
-					<Grid item xs={12} sm={5} md={3}>
+					<Grid item xs={5} sm={3} md={4}>
 						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="Start Date" />
 					</Grid>
-					<Grid item xs={12} sm={5} md={3} style={downSM ? { marginTop: '10px' } : null}>
+					<Grid item xs={5} sm={3} md={4}>
 						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="End Date" />
+					</Grid>
+					<Grid
+						item
+						xs={11}
+						sm={3}
+						md={4}
+						direction="row"
+						display="flex"
+						justify="center"
+						style={downSM ? { marginTop: '10px' } : null}
+					>
+						<AutoCompletePicker filterBy="Name" />
 					</Grid>
 				</Grid>
 				<Grid container direction="row" justify="space-evenly">

@@ -17,6 +17,8 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
+
+
 const useStyles = makeStyles((theme) => ({
 	headerText: {
 		cursor: 'default',
