@@ -14,7 +14,7 @@ export default function ComboBox({ filterBy }) {
 			<Autocomplete
 				id="combo-box-demo"
 				options={top100Films}
-				style={downSM ? { width: '100%' } : { width: '180px' }}
+				style={downSM ? { width: '100%' } : { width: '71%' }}
 				getOptionLabel={(option) => option.title}
 				renderInput={(params) => (
 					<>
