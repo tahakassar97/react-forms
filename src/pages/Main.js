@@ -204,16 +204,16 @@ export default function Main() {
 					<Grid item xs={5} md={3}>
 						<AutoCompletePicker filterBy="Status" />
 					</Grid>
-					<Grid item xs={5} sm={3} md={4}>
+					<Grid item xs={6} sm={4} md={4}>
 						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="Start Date" />
 					</Grid>
-					<Grid item xs={5} sm={3} md={4}>
+					<Grid item xs={6} sm={4} md={4}>
 						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="End Date" />
 					</Grid>
 					<Grid
 						item
 						xs={11}
-						sm={3}
+						sm={4}
 						md={4}
 						direction="row"
 						display="flex"

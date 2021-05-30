@@ -13,20 +13,21 @@ export default function DatePicker({ selectedDate, setSelectedDate, title }) {
 	};
 
 	return (
-			<MuiPickersUtilsProvider utils={DateFnsUtils}>
-				<KeyboardDatePicker
-					id="date-picker-dialog"
-					label={title}
-					style={downSM === false ? { width: '71%'} : null}
-					inputVariant={'filled'}
-					variant="dialog"
-					format="MM/dd/yyyy"
-					value={selectedDate}
-					onChange={handleDateChange}
-					KeyboardButtonProps={{
-						'aria-label': 'change date',
-					}}
-				/>
-			</MuiPickersUtilsProvider>
+		<MuiPickersUtilsProvider utils={DateFnsUtils}>
+			<KeyboardDatePicker
+				id="date-picker-dialog"
+				label={title}
+				InputAdornmentProps={downSM ? { style: { marginRight: '-20px' } } : null}
+				style={downSM === false ? { width: '71%' } : { width: '85%' }}
+				inputVariant={'filled'}
+				variant="dialog"
+				format="MM/dd/yyyy"
+				value={selectedDate}
+				onChange={handleDateChange}
+				KeyboardButtonProps={{
+					'aria-label': 'change date',
+				}}
+			/>
+		</MuiPickersUtilsProvider>
 	);
 }
