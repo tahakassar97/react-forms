@@ -20,7 +20,7 @@ export default function DatePicker({ selectedDate, setSelectedDate, title }) {
 					style={downSM === false ? { width: '71%'} : null}
 					inputVariant={'filled'}
 					variant="dialog"
-					format="MM / dd / yyyy"
+					format="MM/dd/yyyy"
 					value={selectedDate}
 					onChange={handleDateChange}
 					KeyboardButtonProps={{
