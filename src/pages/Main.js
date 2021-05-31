@@ -192,35 +192,35 @@ export default function Main() {
 		<Container className={classes.root}>
 			<Grid className={classes.container}>
 				<Grid container direction="row" justify="space-around">
-					<Grid item xs={5} md={3}>
+					<Grid item xs={5} md={2}>
 						<AutoCompletePicker filterBy="Brand" />
 					</Grid>
-					<Grid item xs={5} md={3}>
+					<Grid item xs={5} md={2}>
 						<AutoCompletePicker filterBy="City" />
-					</Grid>
-					<Grid item xs={5} md={3}>
-						<AutoCompletePicker filterBy="Job" />
-					</Grid>
-					<Grid item xs={5} md={3}>
-						<AutoCompletePicker filterBy="Status" />
-					</Grid>
-					<Grid item xs={6} sm={4} md={4}>
-						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="Start Date" />
-					</Grid>
-					<Grid item xs={6} sm={4} md={4}>
-						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="End Date" />
 					</Grid>
 					<Grid
 						item
 						xs={11}
 						sm={4}
-						md={4}
+						md={2}
 						direction="row"
 						display="flex"
 						justify="center"
 						style={downSM ? { marginTop: '10px' } : null}
 					>
 						<AutoCompletePicker filterBy="Name" />
+					</Grid>
+					<Grid item xs={5} md={1}>
+						<AutoCompletePicker filterBy="Job" />
+					</Grid>
+					<Grid item xs={5} md={1}>
+						<AutoCompletePicker filterBy="Status" />
+					</Grid>
+					<Grid item xs={6} sm={4} md={2}>
+						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="Start Date" />
+					</Grid>
+					<Grid item xs={6} sm={4} md={2}>
+						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="End Date" />
 					</Grid>
 				</Grid>
 				<Grid container direction="row" justify="space-evenly">

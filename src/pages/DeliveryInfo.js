@@ -17,7 +17,20 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
-
+import DescriptionRoundedIcon from '@material-ui/icons/DescriptionRounded';
+import LocationCityRoundedIcon from '@material-ui/icons/LocationCityRounded';
+import CodeRoundedIcon from '@material-ui/icons/CodeRounded';
+import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+import PhoneIphoneRoundedIcon from '@material-ui/icons/PhoneIphoneRounded';
+import AlternateEmailRoundedIcon from '@material-ui/icons/AlternateEmailRounded';
+import NoteRoundedIcon from '@material-ui/icons/NoteRounded';
+import CommentIcon from '@material-ui/icons/Comment';
+import MenuIcon from '@material-ui/icons/Menu';
+import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+import BrandingWatermarkIcon from '@material-ui/icons/BrandingWatermark';
+import TimelineIcon from '@material-ui/icons/Timeline';
+import InsertChartIcon from '@material-ui/icons/InsertChart';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 
 const useStyles = makeStyles((theme) => ({
 	headerText: {
@@ -33,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	secondText: {
 		cursor: 'default',
-		maxWidth: '260px',
+		maxWidth: '240px',
 	},
 	container: {
 		backgroundColor: 'white',
@@ -41,60 +54,65 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: '5px',
 		padding: '10px',
 	},
+	root: {
+		'& .MuiFilledInput-root': {
+			background: '#a0bacc54',
+		},
+	},
 }));
 
-const inquiryTypes = [
-	{
-		id: 1,
-		title: 'Inbound Call',
-	},
-];
+// const inquiryTypes = [
+// 	{
+// 		id: 1,
+// 		title: 'Inbound Call',
+// 	},
+// ];
 
-const lCodes = [
-	{
-		id: 1,
-		title: 'L150 Cubeit',
-	},
-];
+// const lCodes = [
+// 	{
+// 		id: 1,
+// 		title: 'L150 Cubeit',
+// 	},
+// ];
 
-const brands = [
-	{
-		id: 1,
-		title: 'Cubeit',
-	},
-];
+// const brands = [
+// 	{
+// 		id: 1,
+// 		title: 'Cubeit',
+// 	},
+// ];
 
-const jobs = [
-	{
-		id: 1,
-		title: 'Long Distance',
-	},
-];
+// const jobs = [
+// 	{
+// 		id: 1,
+// 		title: 'Long Distance',
+// 	},
+// ];
 
-const lengths = [
-	{
-		id: 1,
-		title: 2,
-	},
-];
+// const lengths = [
+// 	{
+// 		id: 1,
+// 		title: 2,
+// 	},
+// ];
 
-const distances = [
-	{
-		id: 1,
-		title: 'Local (<25 km)',
-	},
-];
+// const distances = [
+// 	{
+// 		id: 1,
+// 		title: 'Local (<25 km)',
+// 	},
+// ];
 
-const units = [
-	{
-		id: 1,
-		title: 2,
-	},
-	{
-		id: 2,
-		title: 3,
-	},
-];
+// const units = [
+// 	{
+// 		id: 1,
+// 		title: 2,
+// 	},
+// 	{
+// 		id: 2,
+// 		title: 3,
+// 	},
+// ];
 
 const states = [
 	{
@@ -113,44 +131,44 @@ export default function DeliveryInfo() {
 	const history = useHistory();
 	const downSM = useMediaQuery(theme.breakpoints.down('sm'));
 	const [preferredLang, setPreferredLang] = useState('english');
-	const [inquiryType, setInquiryType] = useState('');
-	const [brand, setBrand] = useState('');
-	const [lCode, setLCode] = useState('');
-	const [job, setJob] = useState('');
-	const [length, setLength] = useState('');
-	const [distance, setDistance] = useState('');
-	const [multiUnits, setMultiUnits] = useState('yes');
-	const [unit, setUnit] = useState('');
+	// const [inquiryType, setInquiryType] = useState('');
+	// const [brand, setBrand] = useState('');
+	// const [lCode, setLCode] = useState('');
+	// const [job, setJob] = useState('');
+	// const [length, setLength] = useState('');
+	// const [distance, setDistance] = useState('');
+	// const [unit, setUnit] = useState('');
 	const [status, setStatus] = useState('');
+	const [multiUnits, setMultiUnits] = useState('yes');
 	const [showedComments, setShowedComments] = useState(false);
 
-	const handleInquiryType = (e) => {
-		setInquiryType(e.target.value);
-	};
+	// const handleInquiryType = (e) => {
+	// 	setInquiryType(e.target.value);
+	// };
 
-	const handleLCode = (e) => {
-		setLCode(e.target.value);
-	};
+	// const handleLCode = (e) => {
+	// 	setLCode(e.target.value);
+	// };
 
-	const handleBrand = (e) => {
-		setBrand(e.target.value);
-	};
+	// const handleBrand = (e) => {
+	// 	setBrand(e.target.value);
+	// };
 
-	const handleJob = (e) => {
-		setJob(e.target.value);
-	};
+	// const handleJob = (e) => {
+	// 	setJob(e.target.value);
+	// };
 
-	const handleLength = (e) => {
-		setLength(e.target.value);
-	};
+	// const handleLength = (e) => {
+	// 	setLength(e.target.value);
+	// };
 
-	const handleDistance = (e) => {
-		setDistance(e.target.value);
-	};
+	// const handleDistance = (e) => {
+	// 	setDistance(e.target.value);
+	// };
 
-	const handleUnit = (e) => {
-		setUnit(e.target.value);
-	};
+	// const handleUnit = (e) => {
+	// 	setUnit(e.target.value);
+	// };
 
 	const handleStatus = (e) => {
 		const value = e.target.value;
@@ -179,7 +197,7 @@ export default function DeliveryInfo() {
 				</Grid>
 				<Grid item xs={12}>
 					<Typography variant="h6" className={classes.secondText}>
-						1. CLIENT INFO
+						CLIENT INFO
 					</Typography>
 				</Grid>
 				<Grid container spacing={1} style={{ marginTop: '2%' }}>
@@ -193,151 +211,185 @@ export default function DeliveryInfo() {
 						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={3} display="flex" alignItems="center">
-						<TextField required={true} label="Lead ID" width={downSM ? '100%' : '67%'} />
+						<TextField
+							required={true}
+							label="Lead ID"
+							width={downSM ? '100%' : '75%'}
+							isDisabled={true}
+							icon={<DescriptionRoundedIcon />}
+						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
 						<TextField
 							required={false}
 							label="City"
-							display="flex"
-							alignItems="center"
-							width={downSM ? '100%' : '67%'}
+							isDisabled={true}
+							width={downSM ? '100%' : '75%'}
+							icon={<LocationCityRoundedIcon />}
 						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
-						<TextField required={false} label="Unit Size" width={downSM ? '100%' : '67%'} />
+						<TextField
+							required={false}
+							label="Unit Size"
+							isDisabled={true}
+							icon={<CodeRoundedIcon />}
+							width={downSM ? '100%' : '75%'}
+						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
-						<TextField required={true} label="Park quote ID" width={downSM ? '100%' : '67%'} />
+						<TextField
+							required={true}
+							label="Park quote ID"
+							isDisabled={true}
+							icon={<DescriptionRoundedIcon />}
+							width={downSM ? '100%' : '75%'}
+						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={3}>
-						<DropDown
-							inputLabel="Inquiry Type *"
-							element={inquiryType}
-							elements={inquiryTypes}
-							handleChange={handleInquiryType}
-							helperText={false}
-							width={downSM ? '100%' : '67%'}
+						<TextField
+							label="Inquiry Type *"
+							isDisabled={true}
+							width={downSM ? '100%' : '75%'}
+							icon={<MenuIcon />}
 						/>
 					</Grid>
-					<Grid item xs={12} sm={6}>
-						<DropDown
-							inputLabel="LCode *"
-							element={lCode}
-							elements={lCodes}
-							handleChange={handleLCode}
-							helperText={false}
-							width={downSM ? '100%' : '83%'}
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							label="LCode *"
+							isDisabled={true}
+							width={downSM ? '100%' : '75%'}
+							icon={<ConfirmationNumberIcon />}
 						/>
 					</Grid>
-					<Grid item xs={12} sm={6}>
-						<DropDown
-							inputLabel="Brand *"
-							element={brand}
-							elements={brands}
-							handleChange={handleBrand}
-							helperText={false}
-							width={downSM ? '100%' : '83%'}
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							label="Brand *"
+							isDisabled={true}
+							width={downSM ? '100%' : '75%'}
+							icon={<BrandingWatermarkIcon />}
 						/>
 					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField required={true} label="First Name" width={downSM ? '100%' : '83%'} />
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField required={true} label="Last Name" width={downSM ? '100%' : '83%'} />
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField required={true} label="Phone Number" width={downSM ? '100%' : '83%'} />
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField required={true} label="Email" width={downSM ? '100%' : '83%'} />
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<DropDown
-							inputLabel="Type Of Job *"
-							element={job}
-							elements={jobs}
-							handleChange={handleJob}
-							helperText={false}
-							width={downSM ? '100%' : '83%'}
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							required={true}
+							isDisabled={true}
+							label="First Name"
+							icon={<AccountCircleRoundedIcon />}
+							width={downSM ? '100%' : '75%'}
 						/>
 					</Grid>
-					<Grid item xs={12} sm={6}>
-						<DropDown
-							inputLabel="Length Of Stay * (cycle)"
-							element={length}
-							elements={lengths}
-							handleChange={handleLength}
-							helperText={false}
-							width={downSM ? '100%' : '83%'}
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							required={true}
+							isDisabled={true}
+							icon={<AccountCircleRoundedIcon />}
+							label="Last Name"
+							width={downSM ? '100%' : '75%'}
 						/>
 					</Grid>
-					<Grid item xs={12} sm={6}>
-						<DropDown
-							inputLabel="Delivery Distance (DE)*"
-							element={distance}
-							elements={distances}
-							handleChange={handleDistance}
-							helperText={false}
-							width={downSM ? '100%' : '83%'}
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							required={true}
+							isDisabled={true}
+							label="Phone Number"
+							icon={<PhoneIphoneRoundedIcon />}
+							width={downSM ? '100%' : '75%'}
 						/>
 					</Grid>
-					<Grid item xs={6}>
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							required={true}
+							icon={<AlternateEmailRoundedIcon />}
+							isDisabled={true}
+							label="Email"
+							width={downSM ? '100%' : '75%'}
+						/>
+					</Grid>
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							required={true}
+							isDisabled={true}
+							label="Type Of Job"
+							icon={<MenuIcon />}
+							width={downSM ? '100%' : '75%'}
+						/>
+					</Grid>
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							isDisabled={true}
+							label="Length Of Stay*"
+							icon={<TimelineIcon />}
+							width={downSM ? '100%' : '75%'}
+						/>
+					</Grid>
+					<Grid item xs={12} sm={4} md={3}>
+						<TextField
+							isDisabled={true}
+							label="Delivery Distance*"
+							icon={<InsertChartIcon />}
+							width={downSM ? '100%' : '75%'}
+						/>
+					</Grid>
+					<Grid item xs={6} sm={4} md={3}>
 						<RadioGroup
 							formLabel="Multiple Units"
 							value1="Yes"
 							value2="No"
 							value={multiUnits}
+							isDisabled={true}
 							setValue={setMultiUnits}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={12} md={6}>
-						<DropDown
+						<TextField
 							inputLabel="If Yes, how many?"
-							element={unit}
-							elements={units}
-							handleChange={handleUnit}
-							helperText={false}
-							width={downSM ? '100%' : '83%'}
+							isDisabled={true}
+							label="If Yes, how many?"
+							icon={<FormatListBulletedIcon />}
+							width={downSM ? '100%' : '88%'}
 						/>
 					</Grid>
-					<Grid item xs={12}>
-						<FormControl fullWidth variant="filled">
-							<InputLabel
-								htmlFor="filled-adornment-amount"
-								style={downSM === false ? { marginLeft: '4%', marginRight: '4%' } : null}
-							>
-								Notes
-							</InputLabel>
-							<FilledInput
-								style={downSM === false ? { marginLeft: '4%', marginRight: '4%' } : null}
-								id="filled-adornment-amount"
-								multiline
-								rows={4}
-							/>
-						</FormControl>
-					</Grid>
-					<Grid item xs={6}>
+					<Grid item xs={12} sm={12} md={6}>
 						<DropDown
 							inputLabel="Status *"
 							element={status}
 							elements={states}
 							handleChange={handleStatus}
 							helperText={false}
-							width={downSM ? '100%' : '83%'}
+							width={downSM ? '100%' : '88%'}
 						/>
+					</Grid>
+					<Grid item xs={12}>
+						<FormControl fullWidth variant="filled">
+							<InputLabel
+								htmlFor="filled-adornment-amount"
+								style={downSM === false ? { marginLeft: '3%', marginRight: '3%' } : null}
+							>
+								Notes
+							</InputLabel>
+							<FilledInput
+								endAdornment={<NoteRoundedIcon position="end" />}
+								style={downSM === false ? { marginLeft: '3%', marginRight: '3%' } : null}
+								id="filled-adornment-amount"
+								disabled={true}
+								multiline
+								rows={4}
+							/>
+						</FormControl>
 					</Grid>
 					{showedComments ? (
 						<Grid item xs={12}>
-							<FormControl fullWidth variant="filled">
+							<FormControl fullWidth variant="filled" className={classes.root}>
 								<InputLabel
 									htmlFor="filled-adornment-amount"
-									style={downSM === false ? { marginLeft: '4%', marginRight: '4%' } : null}
+									style={downSM === false ? { marginLeft: '3%', marginRight: '3%' } : null}
 								>
 									Comments
 								</InputLabel>
 								<FilledInput
-									style={downSM === false ? { marginLeft: '4%', marginRight: '4%' } : null}
+									endAdornment={<CommentIcon style={{ fill: 'gray' }} />}
+									style={downSM === false ? { marginLeft: '3%', marginRight: '3%' } : null}
 									id="filled-adornment-amount"
 									multiline
 									rows={4}
@@ -350,7 +402,7 @@ export default function DeliveryInfo() {
 						direction="row"
 						display="flex"
 						justify="space-evenly"
-						style={{ margin: '10px 0px 40px 0px' }}
+						style={{ margin: '10px 7px 40px 7px' }}
 					>
 						<Grid item xs={5}>
 							<Button

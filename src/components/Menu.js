@@ -22,10 +22,12 @@ const useStyles = makeStyles((theme) => ({
 	fab: {
 		transform: 'rotate(90deg)',
 		transition: '0.3s',
+		background: '#a0bacc54',
 	},
 	fabReverse: {
 		transform: 'rotate(0deg)',
 		transition: '0.3s',
+		background: '#a0bacc54',
 	},
 }));
 
