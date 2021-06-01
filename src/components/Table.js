@@ -212,7 +212,6 @@ export default function SellerTable({ data_ }) {
 	function EnhancedTableHead(props) {
 		const { classes, order, orderBy, onRequestSort } = props;
 		const createSortHandler = (property) => (event) => {
-			console.log(property);
 			onRequestSort(event, property);
 		};
 

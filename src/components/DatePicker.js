@@ -12,14 +12,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function DatePicker({ selectedDate, setSelectedDate, title }) {
+export default function DatePicker({ selectedDate, title, handleDateChange }) {
 	const theme = useTheme();
 	const downSM = useMediaQuery(theme.breakpoints.down('sm'));
 	const classes = useStyles();
-
-	const handleDateChange = (date) => {
-		setSelectedDate(date);
-	};
 
 	return (
 		<MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -28,10 +24,10 @@ export default function DatePicker({ selectedDate, setSelectedDate, title }) {
 				label={title}
 				className={classes.root}
 				InputAdornmentProps={downSM ? { style: { marginRight: '-20px' } } : null}
-				style={downSM ? { width: '100%' } : { width: '95%' }}
+				style={downSM ? { width: '85%' } : { width: '95%' }}
 				inputVariant={'filled'}
 				variant="dialog"
-				format="MM/dd/yyyy"
+				format="yyyy/M/dd"
 				value={selectedDate}
 				onChange={handleDateChange}
 				KeyboardButtonProps={{

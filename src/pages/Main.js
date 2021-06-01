@@ -1,5 +1,5 @@
 import { Container, Grid, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 // import DropDown from '../components/DropDown';
 import DatePicker from '../components/DatePicker';
 import Paper from '../components/Paper';
@@ -7,6 +7,7 @@ import Table from '../components/Table';
 import AutoCompletePicker from '../components/AutoCompletePicker';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+const dateFormat = require('dateformat');
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -101,15 +102,15 @@ const data2 = [
 
 const data3 = [
 	{
-		eventTime: `2021-05-25
+		eventTime: `2021-05-26
 	18:50:33`,
-		lcode: 'L150',
-		lengthOfStay: '2',
-		firstName: 'Saleem',
+		lcode: 'L170',
+		lengthOfStay: '3',
+		firstName: 'Ali',
 		lastName: 'Mustasa',
-		phone: '647446667',
-		parqId: 'R-206263H',
-		desiredDate: '2021-06-03',
+		phone: '5547446667',
+		parqId: 'R-2062655',
+		desiredDate: '2021-06-26',
 		brand: 'Cubeit',
 		city: 'Ajax',
 		typeOfJob: 'Long Distance',
@@ -135,21 +136,21 @@ const data3 = [
 	18:50:33`,
 		lcode: 'L150',
 		lengthOfStay: '2',
-		firstName: 'Saleem',
+		firstName: 'Linda',
 		lastName: 'Mustasa',
 		phone: '647446667',
-		parqId: 'R-206263H',
+		parqId: 'R-206232T',
 		desiredDate: '2021-06-03',
 		brand: 'EEEE',
-		city: 'Ajax',
-		typeOfJob: 'Long Distance',
+		city: 'Manchester',
+		typeOfJob: 'Move',
 		status: 'Success',
 	},
 	{
 		eventTime: `2021-05-25
 	18:50:33`,
 		lcode: 'L150',
-		lengthOfStay: '2',
+		lengthOfStay: '4',
 		firstName: 'Saleem',
 		lastName: 'Mustasa',
 		phone: '647446667',
@@ -162,71 +163,176 @@ const data3 = [
 	},
 ];
 
+let brands = data3.map((brand) => {
+	return brand.brand;
+});
+
+brands.unshift('All');
+
+let cities = data3.map((city) => {
+	return city.city;
+});
+
+cities.unshift('All');
+
+let names = data3.map((name) => {
+	return `${name.firstName} ${name.lastName}`;
+});
+
+names.unshift('All');
+
+let jobs = data3.map((job) => {
+	return job.typeOfJob;
+});
+
+jobs.unshift('All');
+
+let states = data3.map((status) => {
+	return status.status;
+});
+
+states.unshift('All');
+
+const formatDate = (date) => {
+	const d = dateFormat(date, 'yyyy/mm/dd');
+	return d;
+};
+
 export default function Main() {
-	// const [brand, setBrand] = useState('');
-	// const [city, setCity] = useState('');
-	// const [job, setJob] = useState('');
-	// const [status, setStatus] = useState('');
-	const [selectedDate, setSelectedDate] = React.useState(new Date());
+	const [brand, setBrand] = useState('');
+	const [city, setCity] = useState('');
+	const [job, setJob] = useState('');
+	const [status, setStatus] = useState('');
+	const [name, setName] = useState('');
+	const [selectedStartDate, setSelectedStartDate] = useState(formatDate(new Date()));
+	const [selectedEndDate, setSelectedEndDate] = useState(formatDate(new Date()));
 	const classes = useStyles();
 	const theme = useTheme();
 	const downSM = useMediaQuery(theme.breakpoints.down('xs'));
+	const [data, setData] = useState(data3);
 
-	// const handleBrand = (e) => {
-	// 	setBrand(e.target.value);
-	// };
+	const handleBrand = (e, values) => {
+		if (values !== 'All') {
+			setBrand(values);
+			const filteredData = data3.filter((row) => row.brand === values);
+			setData(filteredData);
+		}
+		if (values === null || values === 'All') {
+			setData(data3);
+		}
+	};
 
-	// const handleCity = (e) => {
-	// 	setCity(e.target.value);
-	// };
+	const handleCity = (e, values) => {
+		if (values !== 'All') {
+			setCity(values);
+			const filteredData = data3.filter((row) => row.city === values);
+			setData(filteredData);
+		}
+		if (values === null || values === 'All') {
+			setData(data3);
+		}
+	};
 
-	// const handleJob = (e) => {
-	// 	setJob(e.target.value);
-	// };
+	const handleJob = (e, values) => {
+		if (values !== 'All') {
+			setJob(values);
+			const filteredData = data3.filter((row) => row.typeOfJob === values);
+			setData(filteredData);
+		}
+		if (values === null || values === 'All') {
+			setData(data3);
+		}
+	};
 
-	// const handleStatus = (e) => {
-	// 	setStatus(e.target.value);
-	// };
+	const handleStatus = (e, values) => {
+		if (values !== 'All') {
+			setStatus(values);
+			const filteredData = data3.filter((row) => row.status === values);
+			setData(filteredData);
+		}
+		if (values === null || values === 'All') {
+			setData(data3);
+		}
+	};
+
+	const handleName = (e, values) => {
+		if (values !== 'All') {
+			setName(values);
+			const filteredData = data3.filter((row) => `${row.firstName} ${row.lastName}` === values);
+			setData(filteredData);
+		}
+		if (values === null || values === 'All') {
+			setData(data3);
+		}
+	};
+
+	const handleStartDate = (date) => {
+		setSelectedStartDate(formatDate(date));
+	};
+
+	const handleEndDate = (date) => {
+		setSelectedEndDate(formatDate(date));
+		let filteredData = [];
+		for (let i of data3) {
+			if (selectedStartDate <= formatDate(i.desiredDate) && formatDate(i.desiredDate) <= selectedEndDate)
+				filteredData.push(i);
+		}
+		setData(filteredData);
+	};
 
 	return (
 		<Container className={classes.root}>
 			<Grid className={classes.container}>
 				<Grid container direction="row" justify="space-around">
 					<Grid item xs={5} md={2}>
-						<AutoCompletePicker filterBy="Brand" />
+						<AutoCompletePicker
+							filterBy="Brand"
+							data={brands}
+							selected={brand}
+							handleChange={handleBrand}
+						/>
 					</Grid>
 					<Grid item xs={5} md={2}>
-						<AutoCompletePicker filterBy="City" />
+						<AutoCompletePicker filterBy="City" data={cities} selected={city} handleChange={handleCity} />
 					</Grid>
 					<Grid
 						item
 						xs={11}
-						sm={4}
+						sm={3}
 						md={2}
 						direction="row"
 						display="flex"
 						justify="center"
 						style={downSM ? { marginTop: '10px' } : null}
 					>
-						<AutoCompletePicker filterBy="Name" />
+						<AutoCompletePicker filterBy="Name" data={names} selected={name} handleChange={handleName} />
 					</Grid>
-					<Grid item xs={5} md={1}>
-						<AutoCompletePicker filterBy="Job" />
+					<Grid item xs={5} sm={3} md={1}>
+						<AutoCompletePicker filterBy="Job" data={jobs} selected={job} handleChange={handleJob} />
 					</Grid>
-					<Grid item xs={5} md={1}>
-						<AutoCompletePicker filterBy="Status" />
+					<Grid item xs={5} sm={3} md={1}>
+						<AutoCompletePicker
+							filterBy="Status"
+							data={states}
+							selected={status}
+							handleChange={handleStatus}
+						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={2}>
-						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="Start Date" />
+						<DatePicker
+							selectedDate={selectedStartDate}
+							handleDateChange={handleStartDate}
+							title="Start Date"
+						/>
 					</Grid>
 					<Grid item xs={6} sm={4} md={2}>
-						<DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} title="End Date" />
+						<DatePicker selectedDate={selectedEndDate} handleDateChange={handleEndDate} title="End Date" />
 					</Grid>
 				</Grid>
 				<Grid container direction="row" justify="space-evenly">
 					<Paper data={data2} />
 				</Grid>
-				<Table data_={data3} />
+				<Table data_={data} />
 			</Grid>
 		</Container>
 	);
