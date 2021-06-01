@@ -81,8 +81,9 @@ export default function CustomizedMenus({ stringsData, columns }) {
 	const handleDownloadAsPdf = () => {
 		const doc = new jsPDF();
 		doc.autoTable({
-			columns: [columns],
-			body: [stringsData],
+			styles: { overflow: 'linebreak', fontSize: 6 },
+			columns: columns,
+			body: stringsData,
 		});
 		doc.save(`data ${new Date().toLocaleDateString()}.pdf`);
 	};

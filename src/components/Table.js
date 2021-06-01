@@ -207,7 +207,6 @@ export default function SellerTable({ data_ }) {
 		);
 	});
 
-	// TODO Collapsible table
 
 	function EnhancedTableHead(props) {
 		const { classes, order, orderBy, onRequestSort } = props;
