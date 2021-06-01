@@ -82,7 +82,6 @@ export default function CustomizedMenus({ stringsData, columns }) {
 		const doc = new jsPDF();
 		doc.autoTable({
 			styles: { overflow: 'linebreak', fontSize: 6 },
-			columns: columns,
 			body: stringsData,
 		});
 		doc.save(`data ${new Date().toLocaleDateString()}.pdf`);
